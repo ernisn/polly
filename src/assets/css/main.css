@@ -328,4 +328,10 @@ a:hover {
     color: white;
 }
 
+.backToMain {
+    height: 500px;
+    width: 400px;
+    color: darkblue;
+}
+
 /*Main section config*/

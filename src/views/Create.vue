@@ -89,14 +89,17 @@
           Go to poll page
           </router-link>
         </div>
+        <div class="backToMain"
+        v-if="back" if="true">
 
+          Poll skapad! Klicka här för att komma till startsidan</div>
+        <router-link
+          v-bind:to = "'//'">
         <button
-            v-on:click="
-              runQuestion();
-              isHidden = false;">
+            class ="button" v-on:click="runQuestion">
           {{ uiLabels.runQ }}
         </button>
-
+       </router-link>
         <div>
           <router-link
               class="routerLink"
@@ -130,7 +133,8 @@ export default {
       questionNumber: 1,
       data: {},
       isHidden: true,
-      uiLabels: {}
+      uiLabels: {},
+      back:false,
     }
   },
   created: function () {
@@ -202,6 +206,7 @@ export default {
         this.isCorrect = this.isCorrect.slice(0, i).concat(this.isCorrect.slice(i + 1, this.isCorrect.length));
         for (var k = 0; k < this.isCorrect.length + 1; k++){
           this.reloadCorrect(k);
+          console.log("removeanswer")
         }
         console.log(this.isCorrect);
         //adds back original text if it has been replaced by the max number of questions reached-notice
@@ -225,9 +230,10 @@ export default {
     },
     runQuestion: function () {
       socket.emit("runQuestion", {pollId: this.pollId, questionNumber: this.questionNumber});
-    },
+      this.back = "true";
+      },
     cleanWindow: function (){
-      //Cleans the window for inputtiung questions and answers, thus preparing for another entry
+      //Cleans the window for inputting questions and answers, thus preparing for another entry
       this.question = "";
       this.answers = ["", ""];
       this.isCorrect = [false, false];

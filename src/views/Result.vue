@@ -104,6 +104,17 @@ export default {
         this.lang = "en"
       socket.emit("switchLanguage", this.lang)
     },
+    nextQuestion: function(){
+      socket.emit("getNextQ", {pollId: this.pollId});
+      this.isClicked = false;
+    },
+    prevQuestion: function(){
+      socket.emit("getPrevQ", {pollId: this.pollId});
+      //Resets "next question" button if it has previously been changed to say "View Results"
+      document.getElementById("nextQuestionButton").innerHTML = 'Next Question';
+      document.getElementById("nextQuestionButton").onclick = 'nextQuestion';
+      this.isClicked = false;},
+
     showResults: function() {
       socket.emit("showResults", {pollId: this.pollId});
       socket.on("sendPoll", function(d) {

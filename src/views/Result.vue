@@ -47,6 +47,7 @@
         <button v-on:click="prevQuestion" class="answerButton">
           {{uiLabels.previousQ}}
         </button>
+        
         <div>
 <!--          Maybe show some comments here-->
         </div>

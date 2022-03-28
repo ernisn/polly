@@ -47,7 +47,7 @@
         <button v-on:click="prevQuestion" class="answerButton">
           {{uiLabels.previousQ}}
         </button>
-        
+
         <div>
 <!--          Maybe show some comments here-->
         </div>
@@ -79,7 +79,7 @@ export default {
       data: {
       },
       resultQ: "",
-      uiLabels: {}
+      uiLabels: {},
     }
   },
   created: function () {
@@ -108,13 +108,16 @@ export default {
     nextQuestion: function(){
       socket.emit("getNextQ", {pollId: this.pollId});
       this.isClicked = false;
-    },
+      this.showResults();
+      },
+
     prevQuestion: function(){
       socket.emit("getPrevQ", {pollId: this.pollId});
       //Resets "next question" button if it has previously been changed to say "View Results"
       document.getElementById("nextQuestionButton").innerHTML = 'Next Question';
       document.getElementById("nextQuestionButton").onclick = 'nextQuestion';
-      this.isClicked = false;},
+      this.isClicked = false;
+      (this.showResults)},
 
     showResults: function() {
       socket.emit("showResults", {pollId: this.pollId});

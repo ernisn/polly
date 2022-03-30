@@ -103,7 +103,7 @@
         <div>
           <router-link
               class="routerLink"
-              v-bind:to="'/result/'+pollId"
+              v-bind:to="'result/'+pollId"
               v-if="!isHidden">
             Check result
           </router-link>

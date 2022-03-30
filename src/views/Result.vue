@@ -1,7 +1,7 @@
 <template>
   <section id="window">
     <section id="header">
-      <leftHeader>
+     <leftHeader>
         <a href="/"><h4>P-o-l-l-yyyyyyyyyyy!</h4></a>
       </leftHeader>
 
@@ -51,7 +51,7 @@
         <div>
 <!--          Maybe show some comments here-->
         </div>
-        <button v-on:click="nextQuestion" class="answerButton">
+        <button v-on:click="nextQuestion" class="answerButton" id="nextQuestionButton">
           {{uiLabels.nextQ}}
         </button>
 
@@ -117,7 +117,8 @@ export default {
       document.getElementById("nextQuestionButton").innerHTML = 'Next Question';
       document.getElementById("nextQuestionButton").onclick = 'nextQuestion';
       this.isClicked = false;
-      (this.showResults)},
+      this.showResults()
+      },
 
     showResults: function() {
       socket.emit("showResults", {pollId: this.pollId});
@@ -138,6 +139,7 @@ export default {
               correctBar.style.color = "#33cc33";
             }
           }
+          
 
           i++;
         });

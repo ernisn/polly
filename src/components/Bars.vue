@@ -11,7 +11,7 @@
         <br/><br/>
       </span>
     </div>
-  </left>
+ </left>
 
   <right>
     <div class="bar" v-for="(item, key) in data" v-bind:key="key">

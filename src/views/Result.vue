@@ -132,7 +132,7 @@ export default {
           console.log(element.isCorrect);
 
           for (var k = 0; k < element.isCorrect.length; k++){
-            if ((element.isCorrect[k] == true) ){
+            if ((element.isCorrect[k] == true)){
               console.log(k);
               const correctBar = document.getElementsByClassName('bar')[k];
               correctBar.style.color = "#33cc33";

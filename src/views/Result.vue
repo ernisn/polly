@@ -108,7 +108,6 @@ export default {
     nextQuestion: function(){
       socket.emit("getNextQ", {pollId: this.pollId});
       this.isClicked = false;
-      this.showResults();
       },
 
     prevQuestion: function(){
@@ -117,7 +116,6 @@ export default {
       document.getElementById("nextQuestionButton").innerHTML = 'Next Question';
       document.getElementById("nextQuestionButton").onclick = 'nextQuestion';
       this.isClicked = false;
-      this.showResults()
       },
 
     showResults: function() {

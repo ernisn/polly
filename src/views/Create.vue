@@ -94,7 +94,7 @@
 
           Poll skapad! Klicka här för att komma till startsidan</div>
         <router-link
-          v-bind:to = "'//'">
+          v-bind:to="'/poll/'+pollId">
         <button
             class ="button" v-on:click="runQuestion">
           {{ uiLabels.runQ }}
